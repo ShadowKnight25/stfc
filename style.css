@@ -27,16 +27,23 @@ p {
   display: inline-block;
   background-color: #1e90ff;
   color: #ffffff;
-  padding: 15px 30px;
-  border-radius: 10px;
+  padding: 20px 30px;
   text-decoration: none;
   font-size: 18px;
-  transition: background 0.3s ease;
   width: 200px;
+  border: none;
+  border-radius: 0; /* Makes the button square */
+  transition: all 0.3s ease;
 }
 
 .button:hover {
   background-color: #00bfff;
+  transform: scale(1.05); /* Slightly enlarges the button */
+  box-shadow: 0 0 15px #00bfff; /* Adds a glow effect */
 }
 
-
+footer {
+  margin-top: 60px;
+  font-size: 0.9rem;
+  color: #999999;
+}
