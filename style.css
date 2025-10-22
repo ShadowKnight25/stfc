@@ -4,11 +4,12 @@ body {
   color: #ffffff;
   text-align: center;
   padding: 60px;
+  margin: 0;
 }
 
 h1 {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 p {
@@ -16,34 +17,92 @@ p {
   margin-bottom: 40px;
 }
 
+/* --- GRID CONTAINER --- */
 .buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 200px); /* 3 buttons per row */
+  gap: 20px;
+  justify-content: center;
 }
 
+/* --- BUTTON STYLE --- */
 .button {
-  display: inline-block;
-  background-color: #1e90ff;
-  color: #ffffff;
-  padding: 20px 30px;
-  text-decoration: none;
-  font-size: 18px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* moves text toward bottom */
   width: 200px;
-  border: none;
-  border-radius: 0; /* Makes the button square */
+  height: 200px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
   transition: all 0.3s ease;
+  overflow: hidden;
+  color: inherit;
+  padding-bottom: 15px;
 }
 
+/* --- BUTTON TEXT AND ICON --- */
+.button-text {
+  color: #ffffff !important;
+  font-size: 18px; 
+  font-weight: bold;
+  text-align: center;
+  text-shadow:
+    2px 2px 4px rgba(0,0,0,0.8),
+    -2px -2px 4px rgba(0,0,0,0.8);
+  line-height: 1.2;
+  z-index: 1;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.button-text i {
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* --- HOVER EFFECTS --- */
 .button:hover {
-  background-color: #00bfff;
-  transform: scale(1.05); /* Slightly enlarges the button */
-  box-shadow: 0 0 15px #00bfff; /* Adds a glow effect */
+  transform: scale(1.05);
+  filter: brightness(1.2);
+  box-shadow: 0 0 20px #00bfff;
 }
 
+.button:hover .button-text {
+  transform: translateY(-3px) scale(1.05);
+  text-shadow:
+    3px 3px 6px rgba(0,0,0,0.8),
+    -3px -3px 6px rgba(0,0,0,0.8);
+}
+
+.button:hover .button-text i {
+  transform: translateY(-5px) scale(1.2);
+}
+
+/* --- FOOTER --- */
 footer {
   margin-top: 60px;
   font-size: 0.9rem;
   color: #999999;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 800px) {
+  .buttons {
+    grid-template-columns: repeat(2, 200px); /* 2 per row on smaller screens */
+  }
+}
+
+@media (max-width: 500px) {
+  .buttons {
+    grid-template-columns: 1fr; /* 1 per row on mobile */
+  }
+
+  .button {
+    width: 100%;
+    max-width: 250px;
+    height: 200px;
+    margin: 0 auto;
+  }
 }
